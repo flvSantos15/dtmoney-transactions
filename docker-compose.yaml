@@ -1,0 +1,12 @@
+services:
+  db:
+    image: mysql:8.0.30-debian
+    environment:
+      - MYSQL_DATABASE=dtmoney
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./.docker/mysql:/docker-entrypoint-initdb.d
+    tmpfs:
+      - /var/lib/mysql
+    security_opt:
+      - seccomp:unconfined

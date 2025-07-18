@@ -5,6 +5,6 @@
 
 ## O que preciso fazer agora.
 
-- Preciso criar o banco com MySQL.
+- Conectar a aplicacao ao banco de dados.
 - Preciso criar o producer e o consumer com RabbitMQ.
 - Preciso ler as mensagens e salvar os dados.

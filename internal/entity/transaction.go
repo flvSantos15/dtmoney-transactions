@@ -4,21 +4,28 @@ import (
 	"errors"
 	"time"
 
-	"github.com/asaskevich/govalidator"
 	uuid "github.com/satori/go.uuid"
+	"github.com/shopspring/decimal"
+)
+
+type TransactionType string
+
+const (
+	Withdraw TransactionType = "withdraw"
+	Deposit  TransactionType = "deposit"
 )
 
 type Transaction struct {
-	ID string `json:"id" valid:"notnull" gorm:"type:uuid;primary_key"`
-	Amount float64 `json:"amount" valid:"notnull" gorm:"type:decimal"`
-	AmountType string `json:"amount_type" valid:"notnull"`
-	CreateAt time.Time `json:"created_at" valid:"-"`
-	UpdatedAt time.Time `json:"updated_at" valid:"-"`
+	ID uuid.UUID `json:"id" gorm:"type:binary(16);primaryKey"`
+	Amount decimal.Decimal `json:"amount" gorm:"type:decimal(10,2)"`
+	AmountType TransactionType `json:"amount_type" gorm:"type:enum('withdraw', 'deposit')"`
+	CreateAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
-func NewTransaction(amount float64, amountType string) (*Transaction, error) {
+func NewTransaction(amount decimal.Decimal, amountType TransactionType) (*Transaction, error) {
 	transaction := &Transaction{
-		ID: uuid.NewV4().String(),
+		ID: uuid.NewV4(),
 		Amount: amount,
 		AmountType: amountType,
 		CreateAt: time.Now(),
@@ -34,13 +41,7 @@ func NewTransaction(amount float64, amountType string) (*Transaction, error) {
 }
 
 func (transaction *Transaction) Validate() error {
-	_, err := govalidator.ValidateStruct(transaction)
-
-	if err != nil {
-		return err
-	}
-
-	if transaction.Amount <= 0 {
+	if transaction.Amount.LessThanOrEqual(decimal.Zero) {
 		return errors.New("amount must be greater than zero")
 	}
 
