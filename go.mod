@@ -3,6 +3,7 @@ module github.com/flvSantos15/dtmoney-transactions
 go 1.24.4
 
 require (
+	github.com/go-chi/chi/v5 v5.2.2
 	github.com/satori/go.uuid v1.2.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/stretchr/testify v1.10.0
