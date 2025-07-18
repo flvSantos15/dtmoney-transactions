@@ -44,5 +44,13 @@ func (transaction *Transaction) Validate() error {
 		return errors.New("amount must be greater than zero")
 	}
 
+	if transaction.AmountType == "" {
+		return errors.New("type of amount must be deposit or withdraw")
+	}
+
+	if transaction.AmountType != "deposit" && transaction.AmountType != "withdraw" {
+		return errors.New("type of amount must be deposit or withdraw")
+	}
+
 	return nil
 }
