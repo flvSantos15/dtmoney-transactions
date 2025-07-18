@@ -4,7 +4,7 @@ import (
 	"errors"
 	"time"
 
-	uuid "github.com/satori/go.uuid"
+	uuid "github.com/google/uuid"
 	"github.com/shopspring/decimal"
 )
 
@@ -24,8 +24,9 @@ type Transaction struct {
 }
 
 func NewTransaction(amount decimal.Decimal, amountType TransactionType) (*Transaction, error) {
+	id := uuid.New()
 	transaction := &Transaction{
-		ID: uuid.NewV4(),
+		ID: id,
 		Amount: amount,
 		AmountType: amountType,
 		CreateAt: time.Now(),

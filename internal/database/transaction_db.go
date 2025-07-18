@@ -14,15 +14,15 @@ func NewTransactionDB(db *sql.DB) *TransactionDB {
 	return &TransactionDB{db: db}
 }
 
-func (transationDB *TransactionDB) CreateTransaction(transaction *entity.Transaction) (*entity.Transaction, error) {
+func (transationDB *TransactionDB) Create(transaction *entity.Transaction) error {
 	_, err := transationDB.db.Exec(`
 		INSERT INTO transactions (id, amount, amount_type, created_at, updated_at)
 		VALUES(?, ?, ?, ?, ?)`,
-		transaction.ID, transaction.Amount, transaction.AmountType, transaction.CreateAt, transaction.UpdatedAt)
+		transaction.ID[:], transaction.Amount, transaction.AmountType, transaction.CreateAt, transaction.UpdatedAt)
 	
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return transaction, nil
+	return nil
 }

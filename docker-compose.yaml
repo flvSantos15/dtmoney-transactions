@@ -4,6 +4,8 @@ services:
     environment:
       - MYSQL_DATABASE=dtmoney
       - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
     volumes:
       - ./.docker/mysql:/docker-entrypoint-initdb.d
     tmpfs:

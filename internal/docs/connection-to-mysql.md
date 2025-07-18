@@ -47,7 +47,7 @@ CREATE TABLE transactions (
   id BINARY(16) PRIMARY KEY,
   amount DECIMAL(10,2) NOT NULL,
   amount_type ENUM('withdraw', 'deposit') NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```

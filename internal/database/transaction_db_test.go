@@ -13,6 +13,6 @@ type TransactionDBTestSuite struct {
 
 func (suite *TransactionDBTestSuite) TestCreate() {
 	transaction := suite.transaction
-	_, err := suite.transactionDB.CreateTransaction(transaction)
+	err := suite.transactionDB.Create(transaction)
 	suite.Nil(err)
 }
