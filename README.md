@@ -3,7 +3,7 @@
 ## 🚀 Purpose
 
 The main goal is to apply Golang concepts.
-Apply concepts of MVVM, TDD, Mensaging, Caching, Logging, Monitoring, Tests, Deploy and more.
+Apply concepts of MVVM, TDD, Caching, Logging, Monitoring, Tests, Deploy and more.
 
 ## 🛠️ Tech Stack
 
@@ -11,21 +11,19 @@ Apply concepts of MVVM, TDD, Mensaging, Caching, Logging, Monitoring, Tests, Dep
 - Redis
 - Testing
 - Gorm
-- Postgres
+- MySQL
 - Docker
 - Monitoring
 - Logging
 - Caching
-- Mensaging
 - Deploy
 
 ## 📌 Highlights
 
-- **Production-ready** project using industry standards and patterns
-- Designed for **real-world industrial use cases**
-- Follows **SOLID principles** and clean code practices
-- Demonstrates proficiency in **full-stack development**, from database modeling to UI polish
-- Built with **recruiters and real jobs in mind**, showcasing a wide range of skills from system design to performance optimization
+- Designed for **real-world industrial use cases**.
+- Follows **SOLID principles** and clean code practices.
+- Demonstrates proficiency in **golang development**.
+- Built with **recruiters and real jobs in mind**, showcasing a wide range of skills from system design to performance optimization.
 
 ## 👤 About Me
 
